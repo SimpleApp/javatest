@@ -21,6 +21,13 @@
     </delete>
     </target>
 
+    <target name="overwrite_tests" description="make sure tests and libs havent been modified">
+        <echo message="overwriting"/>
+        <copy todir="test" overwrite="true">
+            <fileset dir="/Users/benjamingarrigues/Documents/SimpleApp/code/bemyapp/codecontest_tests/"/>
+        </copy>
+    </target>
+
     <target name="mocha-jenkins" description="Test framework">
         
         <echo message="Installing Deps ..." />
@@ -38,5 +45,5 @@
         <echo message="Tests done" />
     </target>
 
-    <target name="jenkins" depends="cleanup,init,mocha-jenkins" />
+    <target name="jenkins" depends="cleanup,init,overwrite_tests,mocha-jenkins" />
 </project>
