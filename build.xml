@@ -22,11 +22,15 @@
     </target>
 
     <target name="mocha-jenkins" description="Test framework">
+        
+        <!--
         <echo message="Installing Deps ..." />
+
         <exec executable="npm" failonerror="true">
         <env key="NODE_PATH" value="/tmp/node_modules/" />
             <arg value="install" />
         </exec>
+        -->
         <echo message="Running the tests ..." />
     <exec executable="mocha"  output="build/testResults/mocha.xml" failonerror="true">
         <env key="NODE_PATH" value="/tmp/node_modules/" />
