@@ -1,4 +1,4 @@
-public class MyFirstJavaProgram {
+public class JavaTest {
 
    /* This is my first java program.  
     * This will print 'Hello World' as the output
