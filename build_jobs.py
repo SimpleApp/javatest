@@ -21,7 +21,7 @@ def replace_in_file(file_path, pattern, subst):
     move(abs_path, file_path)
 
 def create_job(user_name,epreuve, git_url, conf_file_path,build_xml_path, jenkins_jobs_dir):
-    target_dir = os.path.join(jenkins_jobs_dir, epreuve + '-' + user_name )
+    target_dir = os.path.join(jenkins_jobs_dir, epreuve + '-' + user_name)
     print 'target dir :',target_dir
     target_config_path = os.path.join(target_dir, 'config.xml')
     target_build_xml_path = os.path.join(target_dir,'build.xml')
