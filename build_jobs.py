@@ -46,5 +46,5 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    print "usage :  python build_jobs.py epreuve gitlist.txt config.xml /Users/benjamingarrigues/.jenkins/jobs/"
+    print "usage :  python build_jobs.py epreuve1 gitlist.txt config.xml /Users/benjamingarrigues/.jenkins/jobs/"
     main(sys.argv[1:])
