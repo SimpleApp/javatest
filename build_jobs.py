@@ -34,20 +34,27 @@ def create_job(user_name,epreuve, git_url, conf_file_path,build_xml_path, jenkin
 
 
 def main(argv):
-    epreuve = argv[0]
+    epreuve_file = argv[0]
     git_list_file = argv[1]
     conf_file_path = argv[2]
     jenkins_jobs_dir = argv[3]
-    build_xml_path = os.path.join("./private", epreuve, "build.xml")
+    epreuves = []
+    with open(epreuve_file, 'r') as f:
+        for l in f:
+            if len(l) > 0:
+                epreuves.append(l.replace('\n', '').replace('\r', ''))
+
     print "jenkins_jobs_dir ",jenkins_jobs_dir
     with open(git_list_file, 'r') as f:
         for l in f:
             if len(l) > 0:
                 name , git_url = l.split(' ')
                 git_url = git_url.replace('\n', '').replace('\r', '')
-                create_job(name, epreuve, git_url, conf_file_path,build_xml_path, jenkins_jobs_dir)
+                for epreuve in epreuves:
+                    build_xml_path = os.path.join("./private", epreuve, "build.xml")
+                    create_job(name, epreuve, git_url, conf_file_path,build_xml_path, jenkins_jobs_dir)
 
 
 if __name__ == "__main__":
-    print "usage :  python build_jobs.py epreuve1 gitlist.txt config.xml /Users/benjamingarrigues/.jenkins/jobs/"
+    print "usage :  python build_jobs.py epreuves.txt gitlist.txt config.xml /Users/benjamingarrigues/.jenkins/jobs/"
     main(sys.argv[1:])
