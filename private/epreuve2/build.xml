@@ -24,7 +24,7 @@
     <target name="overwrite_tests" description="make sure tests and libs havent been modified">
         <echo message="overwriting"/>
         <copy todir="./" overwrite="true">
-            <fileset dir="/Users/benjamingarrigues/Documents/SimpleApp/code/bemyapp/codecontest/epreuves/epreuve2"/>
+            <fileset dir="/Users/benjamingarrigues/Documents/SimpleApp/code/bemyapp/codecontest/private/epreuve2"/>
         </copy>
     </target>
 
