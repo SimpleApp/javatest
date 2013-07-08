@@ -3,8 +3,8 @@
 
     <target name="init" description="Create build folder and subfolders if required">
         <echo message="Creating Directories..." />
-        <mkdir dir="build"/>
-        <mkdir dir="build/testResults"/>
+        <mkdir dir="workspace/build"/>
+        <mkdir dir="workspace/build/testResults"/>
     </target>
 
     <target name="cleanup" description="Remove cruft generated from testing">
@@ -15,7 +15,7 @@
         </fileset>
     </delete>
     <delete includeemptydirs="true" failonerror="false">
-        <fileset dir="build/testResults">
+        <fileset dir="workspace/build/testResults">
             <include name="**" />
         </fileset>
     </delete>
@@ -23,7 +23,7 @@
 
     <target name="overwrite_tests" description="make sure tests and libs havent been modified">
         <echo message="overwriting"/>
-        <copy todir="test" overwrite="true">
+        <copy todir="workspace/test" overwrite="true">
             <fileset dir="/Users/benjamingarrigues/Documents/SimpleApp/code/bemyapp/codecontest/private/epreuve1/test"/>
         </copy>
     </target>
@@ -32,12 +32,12 @@
         
         <echo message="Installing Deps ..." />
 
-        <exec executable="npm" failonerror="true">
-        <env key="NODE_PATH" value="/tmp/node_modules/" />
-            <arg value="install" />
-        </exec>
+        <exec executable="npm" dir="workspace" failonerror="true">
+            <env key="NODE_PATH" value="/tmp/node_modules/" />
+                <arg value="install" />
+            </exec>
         <echo message="Running the tests ..." />
-    <exec executable="mocha"  output="build/testResults/mocha.xml" failonerror="true">
+    <exec executable="mocha"  dir="workspace/test" output="workspace/build/testResults/mocha.xml" failonerror="true">
         <env key="NODE_PATH" value="/tmp/node_modules/" />
             <arg value="--reporter" />
             <arg value="xunit" />
